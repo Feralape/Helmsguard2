@@ -11,6 +11,7 @@
 #define MOB_DESCRIPTOR_SLOT_TESTICLES 11
 #define MOB_DESCRIPTOR_SLOT_BREASTS 12
 #define MOB_DESCRIPTOR_SLOT_VAGINA 13
+#define MOB_DESCRIPTOR_SLOT_BUTT 14
 
 #define MOB_DESCRIPTOR(descriptor_type) GLOB.mob_descriptors[descriptor_type]
 

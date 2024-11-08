@@ -10,7 +10,7 @@
 	var/sheath_type = SHEATH_TYPE_NONE
 	var/erect_state = ERECT_STATE_NONE
 	var/penis_type = PENIS_TYPE_PLAIN
-	var/penis_size = DEFAULT_PENIS_SIZE
+	organ_size = DEFAULT_PENIS_SIZE
 	var/always_hard = FALSE
 	var/strapon = FALSE
 
@@ -39,7 +39,7 @@
 	sheath_type = SHEATH_TYPE_NORMAL
 
 /obj/item/organ/penis/knotted/big
-	penis_size = 3
+	organ_size = 3
 
 /obj/item/organ/penis/equine
 	name = "equine penis"
@@ -111,14 +111,14 @@
 	slot = ORGAN_SLOT_BREASTS
 	organ_dna_type = /datum/organ_dna/breasts
 	accessory_type = /datum/sprite_accessory/breasts/pair
-	var/breast_size = DEFAULT_BREASTS_SIZE
-	var/lactating = FALSE
+	organ_size = DEFAULT_BREASTS_SIZE
+	var/refilling = FALSE
 	var/milk_stored = 0
 	var/milk_max = 75
 
 /obj/item/organ/breasts/New()
 	..()
-	milk_max = max(75, breast_size * 100)
+	milk_max = max(75, organ_size * 100)
 
 /obj/item/organ/belly
 	name = "belly"
@@ -128,7 +128,7 @@
 	slot = ORGAN_SLOT_BELLY
 	organ_dna_type = /datum/organ_dna/belly
 	accessory_type = /datum/sprite_accessory/belly
-	var/belly_size = DEFAULT_BELLY_SIZE
+	organ_size = DEFAULT_BELLY_SIZE
 
 /obj/item/organ/testicles
 	name = "testicles"
@@ -139,7 +139,7 @@
 	slot = ORGAN_SLOT_TESTICLES
 	organ_dna_type = /datum/organ_dna/testicles
 	accessory_type = /datum/sprite_accessory/testicles/pair
-	var/ball_size = DEFAULT_TESTICLES_SIZE
+	organ_size = DEFAULT_TESTICLES_SIZE
 	var/virility = TRUE
 
 /obj/item/organ/testicles/internal
@@ -166,3 +166,15 @@
 	name = "internal belly"
 	visible_organ = FALSE
 	accessory_type = /datum/sprite_accessory/none
+
+/obj/item/organ/butt
+	name = "butt"
+	icon = 'modular_stonehedge/icons/obj/surgery.dmi'
+	icon_state = "butt"
+	dropshrink = 0.5
+	visible_organ = TRUE
+	zone = BODY_ZONE_PRECISE_STOMACH
+	slot = ORGAN_SLOT_BUTT
+	organ_dna_type = /datum/organ_dna/butt
+	accessory_type = /datum/sprite_accessory/butt/pair
+	organ_size = DEFAULT_BUTT_SIZE

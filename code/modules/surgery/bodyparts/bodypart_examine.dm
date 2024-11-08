@@ -129,22 +129,22 @@
 			if(owner.has_penis() || salami)
 				var/obj/item/organ/penis/ownerpenis = owner.getorgan(/obj/item/organ/penis)
 				if (ownerpenis)
-					if (ownerpenis.penis_size == 3 && salami)
+					if (ownerpenis.organ_size == 3 && salami)
 						bodypart_status += "[owner] has an emormous penis."
 					else
-						bodypart_status += "[owner] has a [find_key_by_value(GLOB.named_penis_sizes, ownerpenis.penis_size+penisAdd)] penis."
+						bodypart_status += "[owner] has a [find_key_by_value(GLOB.named_penis_sizes, ownerpenis.organ_size+penisAdd)] penis."
 				else
 					bodypart_status += "[owner] has a [find_key_by_value(GLOB.named_penis_sizes, 1)] penis."
 			if(owner.has_testicles())
 				var/obj/item/organ/testicles/ownerballs = owner.getorgan(/obj/item/organ/testicles)
-				bodypart_status += "[owner] has [find_key_by_value(GLOB.named_ball_sizes, ownerballs.ball_size)] testicles."
+				bodypart_status += "[owner] has [find_key_by_value(GLOB.named_ball_sizes, ownerballs.organ_size)] testicles."
 			if(owner.has_breasts())
 				var/obj/item/organ/breasts/ownerbreasts = owner.getorgan(/obj/item/organ/breasts)
-				bodypart_status += "[owner] has [find_key_by_value(GLOB.named_breast_sizes, ownerbreasts.breast_size)] breasts."
+				bodypart_status += "[owner] has [find_key_by_value(GLOB.named_breast_sizes, ownerbreasts.organ_size)] breasts."
 			var/mob/living/carbon/human/ownerussy = owner
 			if(ownerussy.has_belly())
 				var/obj/item/organ/belly/ownerbelly = ownerussy.getorgan(/obj/item/organ/belly)
-				bodypart_status += "[owner] has a [find_key_by_value(GLOB.named_belly_sizes, ownerbelly.belly_size)] belly."
+				bodypart_status += "[owner] has a [find_key_by_value(GLOB.named_belly_sizes, ownerbelly.organ_size)] belly."
 			if(owner.has_vagina())
 				bodypart_status += "[owner] has a vagina."
 

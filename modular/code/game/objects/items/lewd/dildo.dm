@@ -92,13 +92,13 @@
 			temp.penis_type = PENIS_TYPE_EQUINE
 	switch(dildo_size)
 		if("small")
-			temp.penis_size = DEFAULT_PENIS_SIZE-1
+			temp.organ_size = DEFAULT_PENIS_SIZE-1
 		if("medium")
-			temp.penis_size = DEFAULT_PENIS_SIZE
+			temp.organ_size = DEFAULT_PENIS_SIZE
 		if("big")
-			temp.penis_size = DEFAULT_PENIS_SIZE+1
+			temp.organ_size = DEFAULT_PENIS_SIZE+1
 		if("huge")
-			temp.penis_size = DEFAULT_PENIS_SIZE+1 //huge doesnt exist in mobs
+			temp.organ_size = DEFAULT_PENIS_SIZE+1 //huge doesnt exist in mobs
 	temp.always_hard = TRUE
 	temp.strapon = TRUE
 	strapon = temp

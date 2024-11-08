@@ -36,8 +36,8 @@
 		user.sexcon.perform_deepthroat_oxyloss(target, 0.6)
 	target.sexcon.handle_passive_ejaculation()
 
-	var/milk_to_add = min(max(user.getorganslot(ORGAN_SLOT_BREASTS).breast_size, 1), user.getorganslot(ORGAN_SLOT_BREASTS).milk_stored)
-	if(user.getorganslot(ORGAN_SLOT_BREASTS).lactating && milk_to_add > 0 && prob(25))
+	var/milk_to_add = min(max(user.getorganslot(ORGAN_SLOT_BREASTS).organ_size, 1), user.getorganslot(ORGAN_SLOT_BREASTS).milk_stored)
+	if(user.getorganslot(ORGAN_SLOT_BREASTS).refilling && milk_to_add > 0 && prob(25))
 		target.reagents.add_reagent(/datum/reagent/consumable/breastmilk, milk_to_add)
 		user.getorganslot(ORGAN_SLOT_BREASTS).milk_stored -= milk_to_add
 		to_chat(target, span_notice("I can taste milk."))

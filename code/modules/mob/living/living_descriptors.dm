@@ -41,8 +41,7 @@
 		/datum/mob_descriptor/testicles,
 		/datum/mob_descriptor/breasts,
 		/datum/mob_descriptor/vagina,
-		// /datum/mob_descriptor/defiant,
-		/datum/mob_descriptor/nsfw,
+		/datum/mob_descriptor/defiant,
 		)
 
 /mob/living/proc/get_descriptor_of_slot(descriptor_slot, list/descs)
@@ -81,14 +80,18 @@
 	var/third_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PROMINENT, MOB_DESCRIPTOR_SLOT_PROMINENT), "%THEY% %DESC1% and %DESC2%")
 	if(third_line)
 		lines += third_line
-	
-	var/fourth_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PENIS, MOB_DESCRIPTOR_SLOT_TESTICLES), "%THEY% %DESC1% and %DESC2%")
+
+	var/fourth_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PROMINENT, MOB_DESCRIPTOR_SLOT_PROMINENT), "%THEY% %DESC1% and %DESC2%")
 	if(fourth_line)
 		lines += fourth_line
-	
-	var/fifth_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BREASTS, MOB_DESCRIPTOR_SLOT_VAGINA), "%THEY% %DESC1% and %DESC2%")
-	if(fifth_line)
-		lines += fifth_line
+
+	var/fifth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PENIS, MOB_DESCRIPTOR_SLOT_TESTICLES), "%THEY% %DESC1% and %DESC2%")
+	if(fifth)
+		lines += fifth
+
+	var/sixth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BREASTS, MOB_DESCRIPTOR_SLOT_VAGINA, MOB_DESCRIPTOR_SLOT_BUTT), "%THEY% %DESC1%, %DESC2% and %DESC3%")
+	if(sixth)
+		lines += sixth
 
 	/// Print the remaining ones in seperate lines
 	for(var/descriptor_type in desc_copy)
@@ -107,8 +110,6 @@
 		var/desc_type = descs[i]
 		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(desc_type)
 		string = replacetext(string, "%DESC[i]%", descriptor.get_coalesce_text(described, used_verbage))
-		if(descriptor.verbage)
-			used_verbage |= descriptor.verbage
 	string = treat_mob_descriptor_string(string, described)
 	return string
 

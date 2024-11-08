@@ -1874,6 +1874,6 @@ generate/load female uniform sprites matching all previously decided variables
 	var/obj/item/organ/breasts/boobs = getorganslot(ORGAN_SLOT_BREASTS)
 	if(!boobs)
 		return FALSE
-	if(boobs.breast_size == 0)
+	if(boobs.organ_size == 0)
 		return FALSE
 	return TRUE
