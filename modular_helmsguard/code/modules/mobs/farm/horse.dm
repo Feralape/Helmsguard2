@@ -16,6 +16,7 @@
 						/obj/item/reagent_containers/food/snacks/fat = 2,
 						/obj/item/natural/hide = 4, /obj/item/natural/bundle/bone/full = 1)
 	base_intents = list(/datum/intent/simple/horse)
+	animal_species = /mob/living/simple_animal/hostile/retaliate/rogue/horse/male
 	health = 180
 	maxHealth = 180
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat,/obj/item/reagent_containers/food/snacks/grown/apple)
@@ -34,6 +35,7 @@
 	STASPD = 15
 	STACON = 8
 	STASTR = 12
+	STAEND = 15
 	pixel_x = -8
 	attack_sound = list('sound/vo/mobs/saiga/attack (1).ogg','sound/vo/mobs/saiga/attack (2).ogg')
 	can_buckle = TRUE
@@ -42,7 +44,8 @@
 	aggressive = 1
 	remains_type = /obj/effect/decal/remains/saiga
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/white_male
+
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/male
 	icon_state = "horsewhite"
 	icon_living = "horsewhite"
 	icon_dead = "horsewhite_dead"
@@ -52,7 +55,11 @@
 	minimum_distance = 10
 	milkies = FALSE
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/white_female
+
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/male/white
+
+
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/white
 	icon_state = "horsewhite"
 	icon_living = "horsewhite"
 	icon_dead = "horsewhite_dead"
@@ -65,7 +72,7 @@
 		/mob/living/simple_animal/hostile/retaliate/rogue/foal/brown_male = 70, /mob/living/simple_animal/hostile/retaliate/rogue/foal/brown_female = 30,
 		/mob/living/simple_animal/hostile/retaliate/rogue/foal/black_male = 70, /mob/living/simple_animal/hostile/retaliate/rogue/foal/black_female = 30)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/brown_male
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/male/brown
 	icon_state = "horsebrown"
 	icon_living = "horsebrown"
 	icon_dead = "horsebrown_dead"
@@ -75,7 +82,7 @@
 	minimum_distance = 10
 	milkies = FALSE
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/brown_female
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/brown
 	icon_state = "horsebrown"
 	icon_living = "horsebrown"
 	icon_dead = "horsebrown_dead"
@@ -88,7 +95,7 @@
 		/mob/living/simple_animal/hostile/retaliate/rogue/foal/brown_male = 70, /mob/living/simple_animal/hostile/retaliate/rogue/foal/brown_female = 30,
 		/mob/living/simple_animal/hostile/retaliate/rogue/foal/black_male = 70, /mob/living/simple_animal/hostile/retaliate/rogue/foal/black_female = 30)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/black_male
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/male/black
 	icon_state = "horseblack"
 	icon_living = "horseblack"
 	icon_dead = "horseblack_dead"
@@ -98,7 +105,7 @@
 	minimum_distance = 10
 	milkies = FALSE
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/black_female
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/black
 	icon_state = "horseblack"
 	icon_living = "horseblack"
 	icon_dead = "horseblack_dead"
@@ -131,6 +138,7 @@
 	animal_species = null
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1, /obj/item/natural/bone = 3)
 	base_intents = list(/datum/intent/simple/horse)
+	faction = list("horse")
 	health = 20
 	maxHealth = 20
 	pass_flags = PASSTABLE | PASSMOB
@@ -154,7 +162,7 @@
 	retreat_distance = 0.3
 	minimum_distance = 10
 	milkies = FALSE
-	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/horse/white_male
+	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/horse/male/white
 
 /mob/living/simple_animal/hostile/retaliate/rogue/foal/white_female
 	icon_state = "foalwhite"
@@ -164,7 +172,7 @@
 	gender = FEMALE
 	retreat_distance = 0.3
 	minimum_distance = 10
-	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/horse/white_female
+	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/horse/white
 
 /mob/living/simple_animal/hostile/retaliate/rogue/foal/brown_male
 	icon_state = "foalbrown"
@@ -175,7 +183,7 @@
 	retreat_distance = 0.3
 	minimum_distance = 10
 	milkies = FALSE
-	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/horse/brown_male
+	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/horse/male/brown
 
 /mob/living/simple_animal/hostile/retaliate/rogue/foal/brown_female
 	icon_state = "foalbrown"
@@ -185,7 +193,7 @@
 	gender = FEMALE
 	retreat_distance = 0.3
 	minimum_distance = 10
-	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/horse/brown_female
+	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/horse/brown
 
 /mob/living/simple_animal/hostile/retaliate/rogue/foal/black_male
 	icon_state = "foalblack"
@@ -196,7 +204,7 @@
 	retreat_distance = 0.3
 	minimum_distance = 10
 	milkies = FALSE
-	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/horse/black_male
+	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/horse/male/black
 
 /mob/living/simple_animal/hostile/retaliate/rogue/foal/black_female
 	icon_state = "foalblack"
@@ -206,62 +214,62 @@
 	gender = FEMALE
 	retreat_distance = 0.3
 	minimum_distance = 10
-	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/horse/black_female
+	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/horse/black
 
 
 
 // TAMED
 
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/white_male/tame
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/male/white/tame
 	tame = TRUE
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/white_female/tame
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/white/tame
 	tame = TRUE
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/white_male/tame/saddled/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/male/white/tame/saddled/Initialize()
 	. = ..()
 	var/obj/item/natural/saddle/S = new(src)
 	ssaddle = S
 	update_icon()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/white_female/tame/saddled/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/white/tame/saddled/Initialize()
 	. = ..()
 	var/obj/item/natural/saddle/S = new(src)
 	ssaddle = S
 	update_icon()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/brown_male/tame
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/male/brown/tame
 	tame = TRUE
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/brown_female/tame
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/brown/tame
 	tame = TRUE
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/brown_male/tame/saddled/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/male/brown/tame/saddled/Initialize()
 	. = ..()
 	var/obj/item/natural/saddle/S = new(src)
 	ssaddle = S
 	update_icon()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/brown_female/tame/saddled/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/brown/tame/saddled/Initialize()
 	. = ..()
 	var/obj/item/natural/saddle/S = new(src)
 	ssaddle = S
 	update_icon()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/black_male/tame
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/male/black/tame
 	tame = TRUE
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/black_female/tame
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/black/tame
 	tame = TRUE
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/black_male/tame/saddled/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/male/black/tame/saddled/Initialize()
 	. = ..()
 	var/obj/item/natural/saddle/S = new(src)
 	ssaddle = S
 	update_icon()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/horse/black_female/tame/saddled/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/horse/black/tame/saddled/Initialize()
 	. = ..()
 	var/obj/item/natural/saddle/S = new(src)
 	ssaddle = S

@@ -44,8 +44,7 @@
 	if(bullets.len)
 		var/obj/O = bullets[bullets.len]
 		bullets -= O
-		O.forceMove(user.loc)
-		user.put_in_hands(O)
+		user.put_in_active_hand(O)
 		update_icon()
 		return TRUE
 

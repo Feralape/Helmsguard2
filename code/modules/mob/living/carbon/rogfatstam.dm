@@ -2,7 +2,15 @@
 //	maxrogfat = round(100 * (rogstam/maxrogstam))
 //	if(maxrogfat < 5)
 //		maxrogfat = 5
+	var/riding_skill = 0
 
+	if(mind)
+		riding_skill = mind.get_skill_level(/datum/skill/misc/riding)
+	if(buckled && istype(buckled, /mob/living/simple_animal/hostile/retaliate/rogue))
+		var/mob/living/simple_animal/hostile/retaliate/rogue/R = buckled
+		maxrogfat = (R.STAEND + (riding_skill*10)) * 10
+	else
+		maxrogfat = 100
 	if(world.time > last_fatigued + 50) //regen fatigue
 		var/added = rogstam / maxrogstam
 		added = round(-10+ (added*-40))
@@ -12,17 +20,25 @@
 			rogfat_add(added)
 		else
 			rogfat = 0
-
 	update_health_hud()
 
 /mob/living/proc/update_rogstam()
 	var/athletics_skill = 0
+	var/riding_skill = 0
 	if(mind)
 		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
-	maxrogstam = (STAEND + (athletics_skill/2 ) ) * 100
+		riding_skill = mind.get_skill_level(/datum/skill/misc/riding)
+	if(buckled && istype(buckled, /mob/living/simple_animal/hostile/retaliate/rogue))
+		var/mob/living/simple_animal/hostile/retaliate/rogue/R = buckled
+		maxrogstam = (R.STAEND + (riding_skill*10)) * 1000
+		rogstam = maxrogstam
+	else
+		maxrogstam = (STAEND + (athletics_skill/2 ) ) * 100
 	if(cmode)
-		if(!HAS_TRAIT(src, TRAIT_BREADY))
+		if(!HAS_TRAIT(src, TRAIT_BREADY) && !buckled)
 			rogstam_add(-2)
+		if(!HAS_TRAIT(src, TRAIT_BREADY) && buckled)
+			rogstam_add(-0.2)
 
 /mob/proc/rogstam_add(added as num)
 	return

@@ -1765,6 +1765,15 @@
 	item_state = "fancycap"
 	sewrepair = TRUE
 
+
+/obj/item/clothing/head/roguetown/tricorn
+	name = "tricorn"
+	desc = "A rugged, three-cornered hat worn by seasoned sailors and roguish adventurers alike. Keeps the sun off your face and adds a touch of swagger. "
+	icon_state = "tricorn"
+	item_state = "tricorn"
+	sewrepair = TRUE
+
+
 /obj/item/clothing/head/roguetown/roguehood/flagellanthood
 	name = "ravox hood"
 	desc = "Headwear commonly worn by Acolytes who worship Ravox. The most fanatical of Ravox's followers are known to flagellate themselves, in an attempt to purge any weakness from their mortal body. As such, the robes help to hide the blood somewhat."
@@ -2032,6 +2041,8 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+
 
 
 /// ORC STUFF

@@ -115,6 +115,7 @@
 #define BOGGUARD	(1<<4)
 #define BOGMASTER	(1<<5)
 #define SHERIFF		(1<<6)
+#define ARQUEBUSIER	(1<<7)
 
 #define CHURCHMEN		(1<<2)
 

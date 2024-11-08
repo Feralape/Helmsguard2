@@ -200,7 +200,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/list/examine_effects = list()
 
 	///played when an item that is equipped blocks a hit
-	var/list/blocksound 
+	var/list/blocksound
 
 	//is it an improvised weapon?
 	var/improvised = FALSE
@@ -210,6 +210,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	//can you infuse this item magically?
 	var/infusable = TRUE
+
+	var/sheathe_sound // played when item is placed on hip_r or hip_l, the belt side slots
 
 /obj/item/Initialize()
 	. = ..()
@@ -319,7 +321,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(sharpness) //give sharp objects butchering functionality, for consistency
 		AddComponent(/datum/component/butchering, 80 * toolspeed)
 
-	if(max_blade_int) 
+	if(max_blade_int)
 		//set blade integrity to randomized 60% to 100% if not already set
 		if(!blade_int)
 			blade_int = max_blade_int + rand(-(max_blade_int * 0.4), 0)
@@ -658,6 +660,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 // user is mob that equipped it
 // slot uses the slot_X defines found in setup.dm
 // for items that can be placed in multiple slots
+// The slot == refers to the new location of the item
 // Initial is used to indicate whether or not this is the initial equipment (job datums etc) or just a player doing it
 /obj/item/proc/equipped(mob/user, slot, initial = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -668,10 +671,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			A.Grant(user)
 	item_flags |= IN_INVENTORY
 	if(!initial)
-		if(equip_sound &&(slot_flags & slotdefine2slotbit(slot)))
-			playsound(src, equip_sound, EQUIP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
-		else if(slot == SLOT_HANDS)
+		var/slotbit = slotdefine2slotbit(slot)
+		if(slot == ITEM_SLOT_HANDS)
 			playsound(src, pickup_sound, PICKUP_SOUND_VOLUME, ignore_walls = FALSE)
+		if(slotbit == ITEM_SLOT_HIP | ITEM_SLOT_BACK_R | ITEM_SLOT_BACK_L)
+			playsound(src, sheathe_sound, SHEATHE_SOUND_VOLUME, ignore_walls = FALSE)
+		else if(equip_sound &&(slot_flags & slotbit))
+			playsound(src, equip_sound, EQUIP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
 	user.update_equipment_speed_mods()
 
 	if(!user.is_holding(src))
@@ -685,7 +691,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 				return
 			qdel(O)
 			return
-		if(slot == SLOT_HANDS)
+		if(slotbit == ITEM_SLOT_HANDS)
 			wield(user)
 		else
 			ungrip(user)

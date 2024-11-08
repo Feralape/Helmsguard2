@@ -45,7 +45,7 @@
 
 	var/skill_multiplier = 0
 
-	if(isliving(target)) // If the target theyre shooting at is a mob/living 
+	if(isliving(target)) // If the target theyre shooting at is a mob/living
 		var/mob/living/T = target
 		if(T.stat != DEAD) // If theyre alive
 			skill_multiplier = 4
@@ -78,7 +78,7 @@
 	woundclass = BCLASS_BLUNT
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	poisontype = /datum/reagent/medicine/tranquilizer
-	poisonfeel = "intense numbing" 
+	poisonfeel = "intense numbing"
 	poisonamount = 10
 
 /obj/item/ammo_casing/caseless/rogue/arrow
@@ -116,7 +116,7 @@
 
 	var/skill_multiplier = 0
 
-	if(isliving(target)) // If the target theyre shooting at is a mob/living 
+	if(isliving(target)) // If the target theyre shooting at is a mob/living
 		var/mob/living/T = target
 		if(T.stat != DEAD) // If theyre alive
 			skill_multiplier = 4
@@ -187,7 +187,7 @@
 	woundclass = BCLASS_BLUNT
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	poisontype = /datum/reagent/medicine/soporpot
-	poisonfeel = "numbing" 
+	poisonfeel = "numbing"
 	poisonamount = 15
 
 /obj/projectile/bullet/reusable/arrow/poison/stone
@@ -206,14 +206,14 @@
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living, adjustToxLoss), 100), 10 SECONDS)
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/atom, visible_message), span_danger("[M] appears greatly weakened by the poison!")), 10 SECONDS)
 
-/obj/projectile/bullet/reusable/bullet
+/obj/projectile/bullet/rogue
 	name = "lead ball"
-	damage = 50		//Arrow-tier damage, so less than crossbow.
+	damage = 75	//higher damage than crossbow
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bullet
-	range = 20		//Higher than arrow, but not halfway through the entire town.
+	range = 25		//Higher than arrow, but not halfway through the entire town.
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
 	woundclass = BCLASS_STAB
@@ -221,13 +221,25 @@
 	armor_penetration = 75	//Crossbow-on-crack AP. Armor only goes up to 100 protection normally; so this ignores most of it but not all. Wear good armor!
 	speed = 0.1		//ZOOM!!!!!
 
+/obj/projectile/bullet/rogue/on_hit(atom/target, blocked = FALSE)
+	. = ..()
+	if(istype(target, /mob/living/carbon/human))
+		var/mob/living/carbon/human/M = target
+		var/list/screams = list("painscream", "paincrit")
+		var/check = rand(1, 20)
+		if(isliving(target))
+			if(check > M.STACON)
+				M.emote(screams)
+				M.Knockdown(rand(15,30))
+				M.Immobilize(rand(30,60))
+
+
 /obj/item/ammo_casing/caseless/rogue/bullet
 	name = "lead sphere"
 	desc = "A small lead sphere. This should go well with gunpowder."
-	projectile_type = /obj/projectile/bullet/reusable/bullet
+	projectile_type = /obj/projectile/bullet/rogue
 	caliber = "musketball"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball"
 	dropshrink = 0.5
-	possible_item_intents = list(/datum/intent/use)
 	max_integrity = 0.1

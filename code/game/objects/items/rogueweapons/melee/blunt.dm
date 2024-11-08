@@ -25,6 +25,12 @@
 	wdefense = 2
 	wbalance = -1
 	blade_dulling = DULLING_BASHCHOP
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_blunt.ogg'
+	sheathe_sound = 'sound/items/wood_sharpen.ogg'
+
+/obj/item/rogueweapon/mace/equipped(mob/user, slot, initial = FALSE)
+	pickup_sound = pick("modular_helmsguard/sound/sheath_sounds/draw_blunt.ogg", "modular_helmsguard/sound/sheath_sounds/draw_blunt2.ogg")
+	. = ..()
 
 /obj/item/rogueweapon/duster
 	force = 15
@@ -51,7 +57,8 @@
 	wbalance = 1
 	blade_dulling = DULLING_BASH
 	gripped_intents = null
-
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_blunt.ogg'
+	sheathe_sound = 'sound/items/wood_sharpen.ogg'
 
 /obj/item/rogueweapon/mace/church
 	force = 25
@@ -148,7 +155,7 @@
 	swingdelay = 10
 	icon_state = "insmash"
 	item_d_type = "blunt"
-	
+
 /datum/intent/mace/rangedthrust
 	name = "thrust"
 	blade_class = BCLASS_STAB

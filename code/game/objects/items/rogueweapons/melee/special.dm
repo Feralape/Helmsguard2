@@ -17,6 +17,8 @@
 	swingsound = BLUNTWOOSH_MED
 	minstr = 5
 	blade_dulling = DULLING_BASHCHOP
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_blunt.ogg'
+	sheathe_sound = 'sound/items/wood_sharpen.ogg'
 
 /datum/intent/lordbash
 	name = "bash"

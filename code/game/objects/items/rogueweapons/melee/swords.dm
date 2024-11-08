@@ -18,7 +18,8 @@
 	max_integrity = 150
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_BULKY
-	pickup_sound = 'sound/foley/equip/swordlarge1.ogg'
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_sword.ogg'
+	sheathe_sound = 'modular_helmsguard/sound/sheath_sounds/put_back_sword.ogg'
 	flags_1 = CONDUCT_1
 	throwforce = 10
 	thrown_bclass = BCLASS_CUT
@@ -33,6 +34,12 @@
 	. = ..()
 	if(icon_state == "sword1")
 		icon_state = "sword[rand(1,3)]"
+
+/obj/item/rogueweapon/sword/equipped(mob/user, slot, initial = FALSE)
+	pickup_sound = pick("modular_helmsguard/sound/sheath_sounds/draw_sword.ogg", "modular_helmsguard/sound/sheath_sounds/draw_sword2.ogg", "modular_helmsguard/sound/sheath_sounds/draw_sword3.ogg")
+	sheathe_sound = pick("modular_helmsguard/sound/sheath_sounds/put_back_sword.ogg", "modular_helmsguard/sound/sheath_sounds/put_back_sword2.ogg")
+	. = ..()
+
 
 /obj/item/rogueweapon/sword/decorated
 	name = "engraved sword"
@@ -105,7 +112,7 @@
 	desc = "A bastard sword that can chop with ease."
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE
-	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_greatsword.ogg'
 	bigboy = 1
 	wlength = WLENGTH_LONG
 	gripsprite = TRUE
@@ -130,6 +137,12 @@
 			if("onback") return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 			if("wielded") return list("shrink" = 0.6,"sx" = 6,"sy" = -2,"nx" = -4,"ny" = 2,"wx" = -8,"wy" = -1,"ex" = 8,"ey" = 3,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 15,"sturn" = -200,"wturn" = -160,"eturn" = -25,"nflip" = 8,"sflip" = 8,"wflip" = 0,"eflip" = 0)
 			if("onbelt") return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
+/obj/item/rogueweapon/sword/long/equipped(mob/user, slot, initial = FALSE)
+	pickup_sound = pickup_sound
+	sheathe_sound = pick("sound/foley/equip/swordlarge1.ogg", "sound/foley/equip/swordlarge2.ogg")
+	. = ..()
+
 
 /obj/item/rogueweapon/sword/long/rider/messer
 	force = 20

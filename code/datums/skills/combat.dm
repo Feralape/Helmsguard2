@@ -36,6 +36,23 @@
 		if(SKILL_LEVEL_LEGENDARY)
 			return 300
 
+/datum/skill/combat/proc/get_firearm_accident_chance_modifier(level) //added parry drain/neg in parries and dodges
+	switch(level)
+		if(SKILL_LEVEL_NONE)
+			return 80
+		if(SKILL_LEVEL_NOVICE)
+			return 60
+		if(SKILL_LEVEL_APPRENTICE)
+			return 40
+		if(SKILL_LEVEL_JOURNEYMAN)
+			return 20
+		if(SKILL_LEVEL_EXPERT)
+			return 10
+		if(SKILL_LEVEL_MASTER)
+			return 5
+		if(SKILL_LEVEL_LEGENDARY)
+			return 0
+
 /datum/skill/combat/knives
 	name = "Knife-fighting"
 
@@ -68,3 +85,6 @@
 
 /datum/skill/combat/shields
 	name = "Shields"
+
+/datum/skill/combat/firearms
+	name = "Firearms"

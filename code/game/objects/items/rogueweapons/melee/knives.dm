@@ -27,7 +27,12 @@
 	thrown_bclass = BCLASS_CUT
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/iron
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_dagger.ogg'
+	sheathe_sound = 'modular_helmsguard/sound/sheath_sounds/put_back_dagger.ogg'
 
+/obj/item/rogueweapon/huntingknife/equipped(mob/user, slot, initial = FALSE)
+	pickup_sound = pick("modular_helmsguard/sound/sheath_sounds/draw_dagger.ogg", "modular_helmsguard/sound/sheath_sounds/draw_dagger2.ogg")
+	. = ..()
 
 
 /datum/intent/dagger

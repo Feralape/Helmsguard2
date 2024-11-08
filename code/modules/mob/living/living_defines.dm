@@ -179,3 +179,5 @@
 
 	/// Voice pitch for audible emotes
 	var/voice_pitch
+
+	var/mounted = FALSE

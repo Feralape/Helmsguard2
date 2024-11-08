@@ -121,6 +121,7 @@
 	wdefense = 5
 	thrown_bclass = BCLASS_STAB
 	throwforce = 25
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_polearm.ogg'
 
 /obj/item/rogueweapon/spear/getonmobprop(tag)
 	. = ..()
@@ -130,6 +131,11 @@
 				return list("shrink" = 0.6,"sx" = -7,"sy" = 2,"nx" = 7,"ny" = 3,"wx" = -2,"wy" = 1,"ex" = 1,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 30,"eturn" = -30,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
 			if("wielded")
 				return list("shrink" = 0.6,"sx" = 5,"sy" = -3,"nx" = -5,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+
+/obj/item/rogueweapon/spear/equipped(mob/user, slot, initial = FALSE)
+	pickup_sound = pick("modular_helmsguard/sound/sheath_sounds/draw_polearm.ogg", "modular_helmsguard/sound/sheath_sounds/draw_spear.ogg")
+	sheathe_sound = pick("sound/foley/equip/swordlarge1.ogg", "sound/foley/equip/swordlarge2.ogg")
+	. = ..()
 
 /obj/item/rogueweapon/spear/javelin
 	force = 15
@@ -275,6 +281,11 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 
+/obj/item/rogueweapon/halberd/equipped(mob/user, slot, initial = FALSE)
+	pickup_sound = pick("modular_helmsguard/sound/sheath_sounds/draw_polearm.ogg", "modular_helmsguard/sound/sheath_sounds/draw_spear.ogg")
+	sheathe_sound = pick("sound/foley/equip/swordlarge1.ogg", "sound/foley/equip/swordlarge2.ogg")
+	. = ..()
+
 /obj/item/rogueweapon/halberd/bardiche
 	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/halberd, /datum/intent/axe/chop, SPEAR_BASH)
@@ -312,6 +323,13 @@
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
 	wdefense = 6
+	sheathe_sound = 'sound/items/wood_sharpen.ogg'
+
+/obj/item/rogueweapon/eaglebeak/equipped(mob/user, slot, initial = FALSE)
+	pickup_sound = pick("modular_helmsguard/sound/sheath_sounds/draw_blunt.ogg", "modular_helmsguard/sound/sheath_sounds/draw_blunt2.ogg")
+	. = ..()
+
+
 
 /obj/item/rogueweapon/eaglebeak/getonmobprop(tag)
 	. = ..()
@@ -331,6 +349,7 @@
 	icon_state = "polehammer"
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
+
 
 /datum/intent/spear/thrust/eaglebeak
 	penfactor = 20

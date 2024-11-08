@@ -364,6 +364,9 @@
 						T.Entered(src)
 				else
 					throw_at(A, 1, 1, src, spin = FALSE)
+				if(buckled && istype(buckled, /mob/living/simple_animal/hostile/retaliate/rogue)) //If riding
+					rogfat_add((100/maxrogfat)*maxrogfat)
+					rogstam_add(-(30/rogstam)*rogstam)
 				return
 			if(INTENT_BITE)
 				if(!A.Adjacent(src))

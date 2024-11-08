@@ -8,8 +8,6 @@
 // END_PREFERENCES
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
-#include "_maps\sundmark.dm"
-#include "_maps\map_files\helmsguard\sundmark.dmm"
 #include "_maps\templates\bog_shack_small.dm"
 #include "_maps\templates\sewers.dm"
 #include "_maps\templates\smalldungeons.dm"
@@ -2286,6 +2284,7 @@
 #include "code\modules\jobs\job_types\roguetown\courtier\jester.dm"
 #include "code\modules\jobs\job_types\roguetown\courtier\magician.dm"
 #include "code\modules\jobs\job_types\roguetown\courtier\physician.dm"
+#include "code\modules\jobs\job_types\roguetown\garrison\arquebusier.dm"
 #include "code\modules\jobs\job_types\roguetown\garrison\bogguard.dm"
 #include "code\modules\jobs\job_types\roguetown\garrison\bogmaster.dm"
 #include "code\modules\jobs\job_types\roguetown\garrison\dungeoneer.dm"
@@ -3650,6 +3649,7 @@
 #include "modular_helmsguard\code\game\objects\items\war_horn.dm"
 #include "modular_helmsguard\code\game\objects\structures\catapult.dm"
 #include "modular_helmsguard\code\game\objects\structures\ladders.dm"
+#include "modular_helmsguard\code\game\objects\weapons\ranged\arquebus.dm"
 #include "modular_helmsguard\code\game\turfs\open\floor\roguefloor.dm"
 #include "modular_helmsguard\code\modules\jobs\job_types\roguetown\orc\orcgrunt.dm"
 #include "modular_helmsguard\code\modules\mobs\farm\horse.dm"

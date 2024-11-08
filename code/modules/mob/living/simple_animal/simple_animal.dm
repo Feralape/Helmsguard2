@@ -172,6 +172,10 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 	var/remains_type
 
+	//stamina stuff
+	var/origin_rogstam
+	var/origin_rogfat
+
 /mob/living/simple_animal/Initialize()
 	. = ..()
 	GLOB.simple_animals[AIStatus] += src
@@ -513,6 +517,14 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			transform = transform.Turn(180)
 		density = FALSE
 		..()
+	if(has_buckled_mobs())
+		var/mob/living/carbon/H = buckled_mobs[1]
+		H.rogstam = origin_rogstam
+		H.rogfat = origin_rogfat
+		update_icon()
+		..()
+
+
 
 /mob/living/simple_animal/proc/CanAttack(atom/the_target)
 	if(see_invisible < the_target.invisibility)
@@ -761,6 +773,8 @@ mob/living/simple_animal/handle_fire()
 		playsound(src.loc, 'sound/foley/zfall.ogg', 100, FALSE)
 		M.visible_message(span_danger("[M] falls off [src]!"))
 	..()
+	M.rogstam = origin_rogstam
+	M.rogfat = origin_rogfat
 	update_icon()
 
 /mob/living/simple_animal/hostile/user_buckle_mob(mob/living/M, mob/user)
@@ -788,6 +802,8 @@ mob/living/simple_animal/handle_fire()
 		M.forceMove(get_turf(src))
 		if(ssaddle)
 			playsound(src, 'sound/foley/saddlemount.ogg', 100, TRUE)
+	origin_rogstam = M.rogstam
+	origin_rogfat = M.rogfat
 	..()
 	update_icon()
 

@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/rifle
+ /obj/item/gun/ballistic/rifle
 	name = "Bolt Rifle"
 	desc = ""
 	icon_state = "moistnugget"
